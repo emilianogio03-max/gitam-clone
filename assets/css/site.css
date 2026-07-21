@@ -1,0 +1,28 @@
+/*
+ * Project-only styles for the static build. Nothing here is from the original theme.
+ *
+ * Hero sizing. The live page puts a <video> in the banner; that MP4 is hotlink-blocked
+ * (HTTP 403) so this build uses a still image. The theme relies on a `.w-100` utility
+ * that no longer exists — app_base.min.css is served empty upstream — so the banner
+ * needs an explicit width/crop or the 1124px image sits short of the viewport edge.
+ */
+
+/* ------------------------------------------------------------------- hero banner */
+.banner__desktop img.changemaker_video1,
+.banner__mobile img.changemaker_video1 {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 44vw, 620px);
+  object-fit: cover;
+  object-position: center 38%;
+}
+
+@media (max-width: 767px) {
+  .banner__desktop img.changemaker_video1,
+  .banner__mobile img.changemaker_video1 {
+    height: clamp(260px, 62vw, 420px);
+  }
+}
+
+/* Layout-builder wrappers also expect the missing .w-100 utility. */
+.w-100 { width: 100%; }
