@@ -27,6 +27,14 @@
 /* Layout-builder wrappers also expect the missing .w-100 utility. */
 .w-100 { width: 100%; }
 
+/* Paired with the aosFallback() check in assets/js/drupal-shim.js: if the scroll
+   animation library never initialises, show the content rather than leaving half
+   the page invisible. Needs to outrank [data-aos^="fade"][data-aos^="fade"]. */
+html.aos-fallback [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* ==================================================================================
    Interior pages
    The captured homepage carries no interior-page template, so these components are

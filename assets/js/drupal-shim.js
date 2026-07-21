@@ -53,4 +53,23 @@
   } else {
     attachAll();
   }
+
+  /*
+   * Safety net for the scroll-reveal animations.
+   *
+   * The theme hides every [data-aos] element at opacity:0 and relies on AOS to add
+   * .aos-animate when it scrolls into view. If AOS fails to start for any reason,
+   * roughly half the homepage stays invisible forever with no error on screen —
+   * which is exactly what happened when jQuery was not on the page.
+   *
+   * If AOS has not initialised shortly after load, reveal the content instead.
+   * Working AOS is unaffected; this only fires when the animation never armed.
+   */
+  function aosFallback() {
+    if (!document.querySelector('.aos-init')) {
+      document.documentElement.classList.add('aos-fallback');
+    }
+  }
+
+  window.addEventListener('load', function () { setTimeout(aosFallback, 600); });
 })(window);
