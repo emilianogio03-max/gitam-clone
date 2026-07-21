@@ -30,10 +30,38 @@ embeds (Facebook / Instagram / LinkedIn), which browsers block over `file://`.
 `.nojekyll` is included so GitHub Pages serves the directory as-is rather than running it
 through Jekyll.
 
+## Pages
+
+| File | Source |
+| --- | --- |
+| `index.html` | mirrored from the live homepage |
+| `about-us.html` | built for this project |
+| `academics.html` | built for this project |
+| `research.html` | built for this project |
+| `fee-scholarships.html` | built for this project |
+| `aspiring-students.html` | built for this project |
+| `campus-life.html` | built for this project |
+| `career-guidance.html` | built for this project |
+| `contact-us.html` | built for this project |
+
+Only the homepage is a copy. The other eight pages were **written for this project**: they
+reuse the cloned header, footer, grid and typography, but their layout components
+(`.interior-hero`, `.interior-card`, `.interior-stat`) and all of their copy are original.
+
+The interior pages exist because GITAM serves its HTML behind Cloudflare bot protection —
+every automated page request returns `403 Attention Required`. Only the homepage could be
+mirrored, from a browser save. The rest of the site was rebuilt rather than scraped.
+
+Navigation links across all nine pages are mapped to whichever local page fits (school and
+discipline links land on `academics.html`, campus links on `campus-life.html`, and so on).
+Anything with no local equivalent is left inert.
+
 ## Layout
 
 ```
-index.html                  the page
+index.html                  mirrored homepage
+*.html                      eight interior pages built for the project
+assets/css/site.css         hero sizing + interior-page components (project-written)
 assets/js/drupal-shim.js    stand-ins for the two Drupal globals app.js closes over
 themes/gitam/assets/        theme CSS, JS, fonts, icons  (mirrored)
 sites/default/files/        content images               (mirrored)
